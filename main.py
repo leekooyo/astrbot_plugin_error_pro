@@ -750,7 +750,7 @@ class ErrorFilter(Star):
                 
         except Exception as e:
             logger.error(f"[ErrorPro] 重新加载完成标记提示失败: {e}")
-            yield event.plain_result(f"❌ 重新加载失败: {e}")
+            yield event.plain_result("重新加载失败，请查看 AstrBot 日志中的 ErrorPro 记录。")
 
     async def _send_error_to_admin(self, event: AstrMessageEvent, message_str: str, ai_explanation: str = None):
         """发送错误信息给管理员"""
