@@ -3,6 +3,12 @@
 一个强大的AstrBot错误处理插件，可以智能拦截机器人的错误消息并选择是否发送通知给管理员。**支持AI上下文感知的错误解释功能**，根据用户消息和错误信息生成友好的解释。
 （感谢DragonEmpery大佬，此插件是基于原插件astrbot_plugin_error_notice的改良）
 
+## 安装此维护版
+
+在 AstrBot 中选择「通过仓库地址安装」，填写 `https://github.com/leekooyo/astrbot_plugin_error_pro`。此仓库基于 [Chris95743 原项目](https://github.com/Chris95743/astrbot_plugin_error_pro) 独立维护，原始版本与本地改动见 [UPSTREAM.md](UPSTREAM.md)。请在 AstrBot 的插件配置界面填写 API 密钥，不要将实际配置文件或报错日志提交到 GitHub。
+
+默认只启用错误消息拦截；管理员通知、AI 解释、自动重试和失败后切换模型均默认关闭。开启管理员通知或 AI 解释后，错误详情和用户消息可能被发送到相应渠道或模型服务，建议先确认接收方与数据范围。
+
 ## 功能特性
 
 - 🚫 **智能错误拦截**：自动识别并拦截包含错误关键词的消息
@@ -37,9 +43,9 @@
 | 配置项 | 类型 | 默认值 | 说明 |
 |--------|------|--------|------|
 | `enable_ai_explanation` | bool | false | 启用AI错误解释功能 |
-| `ai_base_url` | string | https://api.openai.com/v1 | OpenAI兼容的API基础URL |
+| `ai_base_url` | string | https://api.siliconflow.cn | OpenAI兼容的API基础URL |
 | `ai_api_key` | string | "" | AI服务的API密钥 |
-| `ai_model` | string | gpt-3.5-turbo | 使用的AI模型名称 |
+| `ai_model` | string | deepseek-ai/DeepSeek-V3 | 使用的AI模型名称 |
 | `ai_prompt` | string | 请将以下技术错误信息转换为... | AI提示词模板 |
 | `ai_timeout` | int | 10 | AI调用超时时间（秒） |
 | `ai_max_tokens` | int | 500 | AI响应最大Token数 |
