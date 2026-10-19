@@ -89,7 +89,7 @@
         "description": "重试全部失败后的用户提示",
         "type": "string",
         "hint": "当简化重试全部失败且未触发临时切换时，给用户的一句友好提示，留空则不回复",
-        "default": "抱歉，我已尝试重试但仍未成功，请稍后再试。最后一次重试错误: {last_error_info}"
+        "default": "抱歉，处理失败了。请稍后重试；如果持续失败，请联系管理员。"
     },
     "block_retry_fail_and_send_admin": {
         "description": "屏蔽重试失败提示并发送给管理员",

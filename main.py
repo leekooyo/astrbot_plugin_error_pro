@@ -214,7 +214,7 @@ class SimpleRetryLogic:
                     logger.debug("[SimpleRetry] 重试成功后删除了#结束#标记")
                 
                 # 直接替换结果，保持事件流程的完整性
-                event.set_result(event.plain_result(final_text))
+                event.set_result(event.plain_result(final_text).use_t2i(False))
                 return True
             else:
                 if has_error:
@@ -703,7 +703,7 @@ class ErrorFilter(Star):
                     # 如果AI解释成功，设置AI解释作为返回结果
                     if ai_explanation:
                         logger.info(f"使用AI解释替换错误消息: {ai_explanation}")
-                        event.set_result(event.plain_result(ai_explanation))
+                        event.set_result(event.plain_result(ai_explanation).use_t2i(False))
                     else:
                         event.set_result(None)  # 清除结果
                 
@@ -731,7 +731,7 @@ class ErrorFilter(Star):
 
     @filter.command("重新加载完成标记提示")
     async def reload_completion_prompt(self, event: AstrMessageEvent):
-        """重新加载#结束#标记提示设置"""
+        """重新应用回复结束标记设置"""
         try:
             # 先恢复原始人设
             if self.persona_backup:
@@ -744,9 +744,9 @@ class ErrorFilter(Star):
             # 如果启用了注入，重新注入
             if self.inject_completion_prompt:
                 self._inject_completion_prompt()
-                yield event.plain_result("✅ 已重新注入#结束#标记提示到AI人设中")
+                yield event.plain_result("已重新应用回复结束标记设置，当前为开启。")
             else:
-                yield event.plain_result("✅ 已恢复原始AI人设，#结束#标记提示已移除")
+                yield event.plain_result("已重新应用回复结束标记设置，当前为关闭。")
                 
         except Exception as e:
             logger.error(f"[ErrorPro] 重新加载完成标记提示失败: {e}")
@@ -847,9 +847,9 @@ class ErrorFilter(Star):
 
             # 将回复写入结果并终止事件传播
             if llm_resp.result_chain and getattr(llm_resp.result_chain, 'chain', None):
-                event.set_result(MessageEventResult(chain=llm_resp.result_chain.chain))
+                event.set_result(MessageEventResult(chain=llm_resp.result_chain.chain).use_t2i(False))
             else:
-                event.set_result(MessageEventResult().message(llm_resp.completion_text or ""))
+                event.set_result(MessageEventResult().message(llm_resp.completion_text or "").use_t2i(False))
             event.stop_event()
             return True
         except Exception as e:
