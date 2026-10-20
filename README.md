@@ -1,7 +1,9 @@
 # AstrBot Error Pro Plugin
 
+**当前版本：v1.2.1。** 版本号以 [metadata.yaml](metadata.yaml) 为准。
+
 一个强大的AstrBot错误处理插件，可以智能拦截机器人的错误消息并选择是否发送通知给管理员。**支持AI上下文感知的错误解释功能**，根据用户消息和错误信息生成友好的解释。
-（感谢DragonEmpery大佬，此插件是基于原插件astrbot_plugin_error_notice的改良）
+本插件由 Chris95743 基于 [astrbot_plugin_error_notice](https://github.com/DragonEmpery/astrbot_plugin_error_notice) 改良；本仓库为 leekooyo 维护版。
 
 ## 安装此维护版
 
@@ -95,16 +97,18 @@
 
 ## 版本历史
 
-### V1.2.0（当前元数据版本）
+### v1.2.1
+- 错误解释和重试结果使用文本输出，调整重试失败提示与回复结束标记的反馈文案。
+
+### v1.2.0
 - **重大更新**：AI解释现在能根据用户消息和聊天上下文生成个性化回复
 - 支持OpenAI兼容的API接口
 - 可配置AI模型、提示词和调用参数
 - 智能回退机制：AI调用失败时自动使用传统屏蔽模式
 - 用友好的AI解释替代冰冷的技术错误信息
 
-### V1.0.0
-- **特别感谢**：此插件改良自 https://github.com/DragonEmpery/astrbot_plugin_error_notice 。
-- 感谢DragonEmpery大佬，此插件只是站在巨人的肩膀上前进了一小步。
+### v1.0.0
+- 基于 [DragonEmpery 的错误通知插件](https://github.com/DragonEmpery/astrbot_plugin_error_notice) 改良。
 - 初始版本
 - 基础错误拦截和管理员通知功能
 

@@ -286,7 +286,7 @@ class SimpleRetryLogic:
             logger.error(f"[SimpleRetry] 判断是否需要重试时发生错误: {e}")
             return False
 
-@register("astrbot_plugin_error_pro", "Chris", "屏蔽机器人的错误消息，选择是否发送给管理员，支持AI上下文感知的友好解释。", "1.2.0")
+@register("astrbot_plugin_error_pro", "Chris", "屏蔽机器人的错误消息，选择是否发送给管理员，支持AI上下文感知的友好解释。", "1.2.1")
 class ErrorFilter(Star):
     def __init__(self, context: Context, config: dict):
         super().__init__(context)
